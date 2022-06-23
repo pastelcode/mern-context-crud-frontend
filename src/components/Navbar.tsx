@@ -1,9 +1,11 @@
 import {
   BackgroundProps,
+  Button,
   Heading,
   HStack,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 
 const Navbar = () => {
@@ -21,8 +23,15 @@ const Navbar = () => {
       padding={6}
       background={background}
     >
-      <Heading>Posts app</Heading>
-      <ColorModeSwitcher />
+      <Heading as={RouterLink} to="/">
+        Posts app
+      </Heading>
+      <HStack>
+        <Button as={RouterLink} to="/create-post" variant="solid">
+          Create post
+        </Button>
+        <ColorModeSwitcher />
+      </HStack>
     </HStack>
   )
 }
