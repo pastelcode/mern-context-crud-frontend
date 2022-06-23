@@ -1,30 +1,32 @@
-import * as React from "react"
 import {
   useColorMode,
   useColorModeValue,
   IconButton,
   IconButtonProps,
-} from "@chakra-ui/react"
-import { FaMoon, FaSun } from "react-icons/fa"
+  Tooltip,
+} from '@chakra-ui/react'
+import { BiMoon, BiSun } from 'react-icons/bi'
 
-type ColorModeSwitcherProps = Omit<IconButtonProps, "aria-label">
+type ColorModeSwitcherProps = Omit<IconButtonProps, 'aria-label'>
 
-export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
+export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
   const { toggleColorMode } = useColorMode()
-  const text = useColorModeValue("dark", "light")
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun)
+  const text = useColorModeValue('dark', 'light')
+  const SwitchIcon = useColorModeValue(BiMoon, BiSun)
 
   return (
-    <IconButton
-      size="md"
-      fontSize="lg"
-      variant="ghost"
-      color="current"
-      marginLeft="2"
-      onClick={toggleColorMode}
-      icon={<SwitchIcon />}
-      aria-label={`Switch to ${text} mode`}
-      {...props}
-    />
+    <Tooltip label={`Switch to ${text} mode`}>
+      <IconButton
+        size="lg"
+        fontSize="2xl"
+        variant="ghost"
+        color="current"
+        marginLeft="2"
+        onClick={toggleColorMode}
+        icon={<SwitchIcon />}
+        aria-label={`Switch to ${text} mode`}
+        {...props}
+      />
+    </Tooltip>
   )
 }
