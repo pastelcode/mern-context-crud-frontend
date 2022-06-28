@@ -11,7 +11,7 @@ interface Props {
   children: JSX.Element | JSX.Element[]
 }
 
-const PostsContainer = ({ children }: Props) => {
+const PostsProvider = ({ children }: Props) => {
   const [posts, setPosts] = useState<string[]>([])
 
   return (
@@ -21,4 +21,4 @@ const PostsContainer = ({ children }: Props) => {
   )
 }
 
-export default PostsContainer
+export default PostsProvider

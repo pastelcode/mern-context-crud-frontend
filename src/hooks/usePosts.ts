@@ -2,7 +2,11 @@ import { useContext } from 'react'
 import { postsContext, PostsContext } from '../context/postsContext'
 
 const usePosts = () => {
-  return useContext<PostsContext>(postsContext)
+  const { posts } = useContext<PostsContext>(postsContext)
+
+  return {
+    posts,
+  }
 }
 
 export default usePosts

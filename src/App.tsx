@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import PostsContainer from './context/postsContext'
+import PostsProvider from './context/postsContext'
 import { HomePage, PostForm, NotFoundPage } from './pages'
 
 export const App = (): JSX.Element => {
@@ -15,13 +15,13 @@ export const App = (): JSX.Element => {
     <ChakraProvider theme={theme}>
       <Router>
         <Navbar />
-        <PostsContainer>
+        <PostsProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/create-post" element={<PostForm />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </PostsContainer>
+        </PostsProvider>
       </Router>
     </ChakraProvider>
   )
